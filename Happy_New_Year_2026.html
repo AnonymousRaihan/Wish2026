@@ -1,1 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2026</title>
+    
+    <!-- ফন্ট -->
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- আইকন (FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* গিফট বক্স পেজ */
+        #landing-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .gift-box {
+            font-size: 80px;
+            cursor: pointer;
+            animation: bounce 1.5s infinite;
+        }
+
+        .instruction {
+            margin-top: 20px;
+            color: #00eaff;
+            font-size: 18px;
+            animation: blink 2s infinite;
+        }
+
+        .volume-hint {
+            color: #ff0066;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        /* মেইন পেজ */
+        #main-page {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+            background: radial-gradient(circle, #1a0029, #000000);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 20px;
+        }
+        
+        /* কার্ড ডিজাইন */
+        .card-area {
+            padding: 30px 20px;
+            border: 2px solid #555;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,0,0,0.9));
+            width: 85%;
+            max-width: 380px;
+            margin: 20px auto;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+            position: relative;
+        }
+
+        .year {
+            font-size: 4.5em;
+            font-weight: bold;
+            background: linear-gradient(to bottom, #FFD700, #ff8c00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+        }
+
+        .wish-text {
+            font-size: 1.2em;
+            color: #fff;
+            margin: 5px 0;
+            letter-spacing: 1px;
+        }
+
+        /* নামের স্টাইল */
+        .special-name {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 4em;
+            color: #fff; 
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #ff00de,
+                0 0 20px #ff00de,
+                0 0 40px #ff00de;
+            margin: 10px 0;
+            line-height: 1.2;
+            word-wrap: break-word;
+        }
+
+        .footer-msg {
+            font-size: 13px;
+            color: #ccc;
+            margin-top: 15px;
+            font-style: italic;
+            border-top: 1px solid #333;
+            padding-top: 10px;
+        }
+
+        /* ইনপুট সেকশন */
+        .input-section {
+            background: #222;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            width: 85%;
+            max-width: 350px;
+            border: 1px solid #444;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 60%;
+            border-radius: 5px;
+            border: none;
+            background: #fff;
+            color: #000;
+            text-align: center;
+            font-weight: bold;
+            outline: none;
+        }
+
+        .magic-btn {
+            padding: 10px 15px;
+            background: #FFD700;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        /* শেয়ার বাটন গ্রুপ */
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 90%;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
+        }
+
+        .whatsapp { background: #25D366; }
+        .telegram { background: #0088cc; }
+        .messenger { background: #0084ff; }
+        .btn:hover { transform: scale(1.05); }
+
+        /* ক্রেডিট স্ক্রলিং টেক্সট (নতুন যুক্ত করা হয়েছে) */
+        .credit-container {
+            width: 250px; /* আপনার চাওয়া অনুযায়ী সাইজ */
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto 20px auto;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
+
+        .scrolling-text {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            
+            /* রেইনবো কালার এফেক্ট */
+            background: linear-gradient(to right, red, orange, yellow, #00ff00, cyan, blue, violet);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            
+            /* এনিমেশন */
+            animation: scroll-left 10s linear infinite;
+            padding-left: 100%;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        @keyframes blink { 50% { opacity: 0.5; } }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- গিফট বক্স পেজ -->
+    <div id="landing-page" onclick="enterSite()">
+        <div class="gift-box">🎁</div>
+        <div class="instruction">Tap to Open Gift</div>
+        <div class="volume-hint">(Turn Volume Up 🔊)</div>
+    </div>
+
+    <!-- মেইন পেজ -->
+    <div id="main-page">
+        
+        <div class="card-area">
+            <h1 class="year">2026</h1>
+            <div class="wish-text">Happy New Year</div>
+            <div style="font-size: 14px; color: cyan;">Wishing You All The Best</div>
+            
+            <!-- নাম দেখানোর জায়গা -->
+            <div class="special-name" id="displayName">Abu Raihan</div>
+            
+            <div class="footer-msg">
+                "নতুন বছর তোমার জীবনে বয়ে আনুক<br>অনাবিল সুখ ও সমৃদ্ধি!" ❤️
+            </div>
+        </div>
+
+        <!-- নাম লেখার জায়গা -->
+        <div class="input-section">
+            <p style="margin: 0 0 10px 0; font-size: 12px; color: #aaa;">Create your own magic link 👇</p>
+            <input type="text" id="nameInput" placeholder="Enter Your Name">
+            <button class="magic-btn" onclick="updateName()">Magic ✨</button>
+        </div>
+
+        <!-- শেয়ার বাটন -->
+        <div class="share-buttons">
+            <button class="btn whatsapp" onclick="shareTo('whatsapp')">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </button>
+            
+            <button class="btn telegram" onclick="shareTo('telegram')">
+                <i class="fab fa-telegram"></i> Telegram
+            </button>
+
+            <button class="btn messenger" onclick="shareTo('messenger')">
+                <i class="fab fa-facebook-messenger"></i> Messenger
+            </button>
+        </div>
+        
+        <!-- ক্রেডিট স্ক্রলিং টেক্সট (রেইনবো) -->
+        <div class="credit-container">
+            <div class="scrolling-text">
+                𝙿𝚁𝙾𝙶𝚁𝙰𝙼 𝙲𝚁𝙴𝙰𝚃𝙴 𝙰𝙽𝙳 𝙲𝙾𝙳𝙴 𝙳𝙸𝚂𝙸𝙶𝙽 𝙱𝚈 𝙿𝙰𝙿𝙸 𝙺𝙸𝙽𝙶 𝟷𝟼
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const nameFromUrl = urlParams.get('n');
+            
+            if (nameFromUrl) {
+                document.getElementById('displayName').innerText = decodeURIComponent(nameFromUrl);
+            }
+        };
+
+        function enterSite() {
+            document.getElementById('landing-page').style.display = 'none';
+            document.getElementById('main-page').style.display = 'flex';
+            var audio = document.getElementById('bgMusic');
+            audio.play().catch(e => console.log(e));
+        }
+
+        function updateName() {
+            var inputName = document.getElementById('nameInput').value;
+            if (inputName.trim() !== "") {
+                document.getElementById('displayName').innerText = inputName;
+                
+                const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?n=' + encodeURIComponent(inputName);
+                window.history.pushState({path: newUrl}, '', newUrl);
+
+                alert("Magic Done! ✨ এখন নিচের বাটনে ক্লিক করে বন্ধুদের পাঠান।");
+            } else {
+                alert("Please enter a name first!");
+            }
+        }
+
+        function shareTo(platform) {
+            var currentName = document.getElementById('displayName').innerText;
+            var shareUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?n=' + encodeURIComponent(currentName);
+            var message = "দেখো " + currentName + " তোমার জন্য স্পেশাল উইশ পাঠিয়েছে! 👇\nWelcome 2026 🎉\nOpen this magic link: " + shareUrl;
+
+            if (platform === 'whatsapp') {
+                window.open("https://wa.me/?text=" + encodeURIComponent(message), "_blank");
+            } 
+            else if (platform === 'telegram') {
+                window.open("https://t.me/share/url?url=" + encodeURIComponent(shareUrl) + "&text=" + encodeURIComponent(message), "_blank");
+            } 
+            else if (platform === 'messenger') {
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'Happy New Year 2026',
+                        text: message,
+                        url: shareUrl
+                    }).catch(console.error);
+                } else {
+                    copyToClipboard(shareUrl);
+                    alert("Link copied! Paste it in Messenger.");
+                }
+            }
+        }
+
+        function copyToClipboard(text) {
+            var textarea = document.createElement("textarea");
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+        }
+    </script>
+</body>
+  </html>
